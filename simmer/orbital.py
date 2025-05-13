@@ -27,12 +27,16 @@ class Orbital(Simulation):
     def _j2_accel(self, r_vec):
         x, y, z = r_vec
         r = np.linalg.norm(r_vec)
-        zx = z / r
+        zr = z**2 / r**2
         factor = 1.5 * self.J2 * self.mu * self.R_e**2 / r**5
-        ax = x * (1 - 5 * zx**2)
-        ay = y * (1 - 5 * zx**2)
-        az = z * (3 - 5 * zx**2)
-        return -self.mu * r_vec / r**3 + factor * np.array([ax, ay, az])
+        ax = x * (1 - 5 * zr)
+        ay = y * (1 - 5 * zr)
+        az = z * (3 - 5 * zr)
+
+        a_g = -self.mu * r_vec / r**3
+        a_j = factor * np.array([ax, ay, az])
+
+        return a_g + a_j
 
     def _dynamics(self, t, state):
         r = state[:3]
