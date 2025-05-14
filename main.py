@@ -18,4 +18,4 @@ def run_orbital():
 
 
 if __name__ == "__main__":
-    run_harmonic()
+    run_orbital()

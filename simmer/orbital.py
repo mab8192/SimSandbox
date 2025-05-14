@@ -12,7 +12,7 @@ class Orbital(Simulation):
                  v0=np.array([0.0, 7.5, 1.0]),
                  mu=398600.4418,
                  R_e=6378.137,
-                 J2=8.08262668e-3,
+                 J2=1.08262668e-3,
                  **kwargs):
         super().__init__(**kwargs)
         self.mu = mu
@@ -200,4 +200,3 @@ class Orbital(Simulation):
         )
 
         fig.show()
-
